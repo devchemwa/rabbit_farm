@@ -7,23 +7,13 @@ class Rabbit{
     protected $ear_tag;
     protected $gender;
     protected $date_of_birth;
-    protected $mother_id;
-    protected $father_id;
     protected $status;
-   public function __construct($name, $ear_tag, $gender, $date_of_birth, $mother_id, $father_id, $status){
+   public function __construct($name, $ear_tag, $gender, $date_of_birth,$status){
         $this->name = $name;
         $this->ear_tag = $ear_tag;
         $this->gender = $gender;
         $this->date_of_birth = $date_of_birth;
-        $this->mother_id = $mother_id;
-        $this->father_id = $father_id;
         $this->status = $status;
-    }
-    public function getDetails(){
-        $details = array($this->name,$this->ear_tag,$this->gender,$this->date_of_birth,$this->mother_id,$this->father_id,$this->status);
-        for($i = 0; $i < count($details); $i++){
-            echo $details[$i] . "<br>";
-        }
     }
 }
 $conn = mysqli_connect($server,$user,$pass,$db_name); 
@@ -58,11 +48,9 @@ if(isset($_POST["add_rabbit"])){
     $ear_tag = htmlspecialchars($_POST["ear_tag"]);
     $gender = htmlspecialchars($_POST["gender"]);
     $date_of_birth = htmlspecialchars($_POST["date_of_birth"]);
-    $mother_id = htmlspecialchars($_POST["mother_id"]);
-    $father_id = htmlspecialchars($_POST["father_id"]);
     $status = htmlspecialchars($_POST["status"]);
-    $new_rabbit = new Rabbit($name,$ear_tag,$gender,$date_of_birth,$mother_id,$father_id,$status);
-    $sql = "insert into rabbits(name,ear_tag,gender,date_of_birth,mother_id,father_id,status) values('$name','$ear_tag','$gender','$date_of_birth','$mother_id','$father_id','$status')";
+    $new_rabbit = new Rabbit($name,$ear_tag,$gender,$date_of_birth,$status);
+    $sql = "insert into rabbits(name,ear_tag,gender,date_of_birth,status) values('$name','$ear_tag','$gender','$date_of_birth','$status')";
     $query = mysqli_query($conn, $sql);
     if(!$query){
         echo "failed to add new rabbit: " . $query;
