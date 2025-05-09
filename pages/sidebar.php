@@ -2,11 +2,10 @@
     <div class="sidebar">
         <aside>
             <ul>
-                <li><a href="http://localhost/rabbit_farm/pages/rabbits/add.php">Add New Rabbit</a></li>
-                <li><a href="http://localhost/rabbit_farm/pages/breeding/records.php">Breeding Records</a></li>
-                <li><a href="http://localhost/rabbit_farm/pages/finance/transactions.php">Transactions</a></li>
-                <li><a href="http://localhost/rabbit_farm/pages/health/records.php">Rabbit Health</a></li>
-                <li><a href="http://localhost/rabbit_farm/pages/rabbits/list.php">List Rabbits</a></li>
+                <li><a href="http://localhost/rabbit_farm/classes/breeding.php">Breeding</a></li>
+                <li><a href="http://localhost/rabbit_farm/classes/finance.php">Finances</a></li>
+                <li><a href="http://localhost/rabbit_farm/classes/health.php">Rabbit Health</a></li>
+                <li><a href="http://localhost/rabbit_farm/classes/rabbit.php">Rabbits</a></li>
             </ul>
         </aside>
     </div>

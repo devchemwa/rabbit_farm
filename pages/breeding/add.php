@@ -89,7 +89,6 @@ if(isset($_POST['submit'])) {
     $notes = htmlspecialchars($_POST['notes']);
     $sql = "insert into breeding_records(buck_ear_tag,doe_ear_tag,breeding_date,litter_size,notes) values('$buck_ear_tag','$doe_ear_tag','$breeding_date','$litter_size','$notes')";
     $query = mysqli_query( $mysqli, $sql);
-    $save = mysqli_commit($mysqli);
     if($query == true){
         printf("Record Added Succesfully...");
     }else{
