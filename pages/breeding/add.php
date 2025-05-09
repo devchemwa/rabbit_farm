@@ -18,7 +18,7 @@ if (!$mysqli) {
 <div class="container-fluid">
 <ul class="nav justify-content-center">
   <li class="nav-item">
-    <a class="nav-link" href="http://localhost/rabbit_farm/index.php">Home</a>
+  <a class="nav-link" href="http://localhost/rabbit_farm/pages/dashboard.php">Dashboard</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="http://localhost/rabbit_farm/pages/breeding/records.php">Breeding Records</a>

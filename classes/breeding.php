@@ -9,11 +9,15 @@
 </head>
 <body>
 <div class="container-fluid">
-    <ul>
-        <li><a href="http://localhost/rabbit_farm/pages/breeding/add.php">Breed Rabbits</a></li>
-        <li><a href="http://localhost/rabbit_farm/pages/breeding/records.php">Breeding Records</a></li>
-    </ul>
-</div>    
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+  <a class="nav-link" href="http://localhost/rabbit_farm/pages/breeding/add.php">Breed Rabbits</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" href="http://localhost/rabbit_farm/pages/breeding/records.php">Breeding Records</a>
+  </li>
+</ul>
+</div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
