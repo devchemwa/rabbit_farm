@@ -46,7 +46,15 @@ if(!$conn){
             <option value="<?=$choices[$i];?>"><?=$choices[$i];?></option>
             <?php } ?>
         </select><br><br>
-        <input type="text" name="category" id="category" placeholder="Category" required><br><br>
+        <select name="category" id="category">
+            <option disabled>--Choose Category--</option>
+            <?php 
+            $categories = array("Feeds","Medicine","Equipment","Fresh Meat","Baked Meat");
+            for($i=0;$i<count($categories);$i++){
+            ?>
+            <option value="<?=$categories[$i];?>"><?=$categories[$i];?></option>
+            <?php } ?>
+        </select><br><br>
         <input type="number" name="amount" id="amount" placeholder="Amount" required><br><br>
         <label for="description">Description: </label><br><br>
         <textarea name="description" id="description" cols="30" rows="5"></textarea><br><br>

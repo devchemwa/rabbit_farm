@@ -35,19 +35,31 @@ $result = mysqli_fetch_all( $query );
 </ul>
   </div>
   <div class="container-fluid">
-        <?php for($i= 0;$i<count($result);$i++){ ?>
-          <div>
-            <br><br>
-            <b>Date: </b><?=$result[$i][0];?> <br>
-            <b>Type:</b> <?=$result[$i][1];?><br>
-            <b>Category: </b><?=$result[$i][2];?><br>
-            <b>Total:</b> <?=$result[$i][3];?><br>
-            <b>Description:</b> <?=$result[$i][4];?><br>
-            <b>Ear Tag: </b><?=$result[$i][5];?><br><br>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Category</th>
+          <th>Amount</th>
+          <th>Description</th>
+          <th>Ear Tag</th>
+        </tr>
+      </thead>
+      <tbody>
+           <?php for($i= 0;$i<count($result);$i++){ ?>
+            <tr>
+              <td><?=$result[$i][0];?></td>
+              <td><?=$result[$i][1];?></td>
+              <td><?=$result[$i][2];?></td>
+              <td><?=$result[$i][3];?></td>
+              <td><?=$result[$i][4];?></td>
+              <td><?=$result[$i][5];?></td>
+            </tr>
+          <?php }  ?>
+      </tbody>
+    </table>
           </div>
-          
-        <?php }  ?>
-
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" crossorigin="anonymous"></script>
 </body>

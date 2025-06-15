@@ -1,25 +1,6 @@
 <?php
 include 'c://xampp/htdocs/rabbit_farm/includes/config.php';
-
-//rabbit class to implement adding new rabbits
-class Rabbit{
-    protected $name;
-    protected $ear_tag;
-    protected $gender;
-    protected $date_of_birth;
-    protected $status;
-   public function __construct($name, $ear_tag, $gender, $date_of_birth,$status){
-        $this->name = $name;
-        $this->ear_tag = $ear_tag;
-        $this->gender = $gender;
-        $this->date_of_birth = $date_of_birth;
-        $this->status = $status;
-    }
-}
-$conn = mysqli_connect($server,$user,$pass,$db_name); 
-if(!$conn){
-    echo "Connection failed: " . mysqli_connect_error();
-}else{
+include 'c://xampp/htdocs/rabbit_farm/includes/db.php'
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,12 +30,42 @@ if(!$conn){
     <form action="add.php" method="post">
         <input type="text" name="rabbit_name" id="rabbit_name" placeholder="Rabbit Name" required><br><br>
         <input type="text" name="ear_tag" id="ear_tag" placeholder="Ear Tag" required><br><br>
+        <select name="doe_ear_tag" id="doe_ear_tag">
+            <option disabled>--Select Doe Ear Tag--</option>
+            <?php 
+            $sql = "select distinct doe_ear_tag from breeding_records";
+            $query = mysqli_query($conn, $sql);
+            $doeEarTags = mysqli_fetch_all($query, MYSQLI_ASSOC);
+            for($i=0;$i<count($doeEarTags); $i++){ ?>
+            <option value="<?= $doeEarTags[$i]['doe_ear_tag']; ?>"><?= $doeEarTags[$i]['doe_ear_tag']; ?></option>
+            <?php } ?>       
+        </select><br><br>
+        <select name="buck_ear_tag" id="buck_ear_tag">
+            <option  disabled>--Select Buck Ear Tag--</option>
+            <?php 
+            $sql = "select distinct buck_ear_tag from breeding_records";
+            $query = mysqli_query($conn, $sql);
+            $doeEarTags = mysqli_fetch_all($query, MYSQLI_ASSOC);
+            for($i=0;$i<count($doeEarTags); $i++){ ?>
+            <option value="<?= $doeEarTags[$i]['buck_ear_tag']; ?>"><?= $doeEarTags[$i]['buck_ear_tag']; ?></option>
+            <?php } ?>       
+        </select><br><br>
         <label for="gender">Gender: </label><br><br>
         <select name="gender" id="gender" required>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
         </select><br><br>
-        <input type="date" name="date_of_birth" id="date_of_birth" placeholder="Date Of Birth" required><br><br>
+        <select name="breed" id="breed">
+            <option disabled>--Select Breed--</option>
+            <?php
+            $breeds = array("New Zealand White", "California White", "Chinchilla", "Flemish Giant", "Angora");
+            for($i=0;$i<count($breeds);$i++){
+            ?>
+            <option value="<?=$breeds[$i];?>"><?=$breeds[$i];?></option>
+            <?php } ?>
+        </select><br><br>
+        <label for="dob">Date Of Birth: </label><br><br>
+        <input type="date" name="date_of_birth" id="date_of_birth"  required><br><br>
         <label for="status">Status: </label><br><br>
         <select name="status" id="status" required>
         <option value="active">Active</option>
@@ -76,18 +87,19 @@ if(!$conn){
 if(isset($_POST["add_rabbit"])){
     $name = htmlspecialchars($_POST["rabbit_name"]);
     $ear_tag = htmlspecialchars($_POST["ear_tag"]);
+    $doe_ear_tag = $_POST['doe_ear_tag'];
+    $buck_ear_tag = $_POST['buck_ear_tag'];
     $gender = htmlspecialchars($_POST["gender"]);
+    $breed = $_POST['breed'];
     $date_of_birth = htmlspecialchars($_POST["date_of_birth"]);
     $status = htmlspecialchars($_POST["status"]);
-    $new_rabbit = new Rabbit($name,$ear_tag,$gender,$date_of_birth,$status);
-    $sql = "insert into rabbits(name,ear_tag,gender,date_of_birth,status) values('$name','$ear_tag','$gender','$date_of_birth','$status')";
+    $sql = "insert into rabbits(name,ear_tag,doe_ear_tag,buck_ear_tag,gender,breed,date_of_birth,status) values('$name','$ear_tag','$doe_ear_tag','$buck_ear_tag','$gender','$breed','$date_of_birth','$status')";
     $query = mysqli_query($conn, $sql);
     if(!$query){
         echo "failed to add new rabbit: " . $query;
 }else{
     $url = "http://localhost/rabbit_farm/pages/rabbits/list.php";
     header("Location: " . $url);
-}
 }
 }
 ?>

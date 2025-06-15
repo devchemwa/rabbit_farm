@@ -33,9 +33,9 @@ if(!$conn){
 </div> 
     
 <div class="container-fluid">
-      <table border="1">
+      <table class="table table-striped">
         <thead>
-                <th>NAME</th>
+                <th>CAGE NUMBER</th>
                 <th>EAR TAG</th>
                 <th>MOTHER</th>
                 <th>FATHER</th>

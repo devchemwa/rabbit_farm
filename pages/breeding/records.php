@@ -30,8 +30,8 @@ if (!$mysqli) {
 </ul>
 </div>    
 <div class="container-fluid">
-  <div class="table table-striped-columns">
-    <table border="1">
+  <div>
+    <table class="table table-striped">
       <thead>
         <tr>
           <th>Buck</th>
